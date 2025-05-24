@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 270 95% 75%; /* Modern Purple */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 15% 8%; /* Deep Charcoal */
+  --secondary-foreground: 0 0% 98%;
+  --accent: 195 100% 65%; /* Electric Blue */
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 270 95% 75%;
+  --radius: 1rem;
+  
+  /* Custom RentPe Brand Colors */
+  --rentpe-primary: 270 95% 75%; /* Electric Purple */
+  --rentpe-secondary: 220 15% 8%; /* Deep Charcoal */
+  --rentpe-accent: 195 100% 65%; /* Electric Blue */
+  --rentpe-success: 142 76% 36%; /* Modern Green */
+  --rentpe-warning: 25 95% 53%; /* Vibrant Orange */
+  --rentpe-gradient-1: 270 95% 75%;
+  --rentpe-gradient-2: 195 100% 65%;
+  --rentpe-gradient-3: 310 100% 80%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 17 88% 59%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--rentpe-gradient-1)) 0%, 
+      hsl(var(--rentpe-gradient-2)) 50%, 
+      hsl(var(--rentpe-gradient-3)) 100%);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--rentpe-primary) / 0.3),
+                0 0 40px hsl(var(--rentpe-primary) / 0.2),
+                0 0 60px hsl(var(--rentpe-primary) / 0.1);
+  }
+  
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .stagger-animation {
+    animation: staggerFade 1s ease-out forwards;
+  }
+  
+  @keyframes staggerFade {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Stunning motion effects for flashcards */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); }
+    50% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.6); }
+  }
+  
+  @keyframes slide-in {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+  }
+  
+  .glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-rentpe-primary {
+    color: hsl(var(--rentpe-primary));
+  }
+  
+  .text-rentpe-secondary {
+    color: hsl(var(--rentpe-secondary));
+  }
+  
+  .text-rentpe-accent {
+    color: hsl(var(--rentpe-accent));
+  }
+  
+  .text-rentpe-success {
+    color: hsl(var(--rentpe-success));
+  }
+  
+  .text-rentpe-warning {
+    color: hsl(var(--rentpe-warning));
+  }
+  
+  .bg-rentpe-primary {
+    background-color: hsl(var(--rentpe-primary));
+  }
+  
+  .bg-rentpe-secondary {
+    background-color: hsl(var(--rentpe-secondary));
+  }
+  
+  .bg-rentpe-accent {
+    background-color: hsl(var(--rentpe-accent));
+  }
+  
+  .bg-rentpe-success {
+    background-color: hsl(var(--rentpe-success));
+  }
+  
+  .bg-rentpe-warning {
+    background-color: hsl(var(--rentpe-warning));
+  }
+  
+  .hover\:bg-rentpe-primary:hover {
+    background-color: hsl(17 88% 54%); /* Darker shade */
+  }
+  
+  .hover\:text-rentpe-primary:hover {
+    color: hsl(var(--rentpe-primary));
+  }
+  
+  .border-rentpe-primary {
+    border-color: hsl(var(--rentpe-primary));
+  }
+}
